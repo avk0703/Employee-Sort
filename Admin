@@ -1,0 +1,53 @@
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+
+/**
+ * MySort: class implementing Comparator to sort age and name wise
+ */
+class MySort implements Comparator<Admin>{
+	int n;
+	public MySort(int n) {
+		this.n=n;
+	}
+	public int compare(Admin e1, Admin e2) {
+		if(n==0)
+		return e1.age.toString().compareTo(e2.age.toString());
+		else
+			return e1.name.compareTo(e2.name);
+        }
+    }
+
+/**
+ * Admin:Class implementing EmpInterface and giving body to its functions
+ *
+ */
+public class Admin implements EmpInterface {
+	String name;
+	Integer age;
+	LinkedList<Admin> adminList;
+	
+	Admin(String n,int a,LinkedList<Admin> l){
+		name=n;
+		age=a;
+		adminList=l;
+	}
+	
+	
+	public void sortAge(){
+			Collections.sort(adminList,new MySort(0));
+	      for (Admin admin2 : adminList) {
+			System.out.println(admin2);
+		} 
+	}
+	
+	public void sortName(){
+		Collections.sort(adminList,new MySort(1));
+		for (Admin admin2 : adminList) {
+			System.out.println(admin2);
+		}
+	}
+	public String toString(){
+		return "Name:"+name+"\nAge:"+age;
+	}
+}
