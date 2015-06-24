@@ -1,0 +1,56 @@
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedList;
+/**
+ * MySort11: class implementing Comparator to sort age and name wise
+ */
+class MySort11 implements Comparator<Developer>{
+	int n;
+	public MySort11(int n) {
+		this.n=n;
+	}
+	public int compare(Developer e1, Developer e2) {
+		if(n==0){
+		return e1.age.toString().compareTo(e2.age.toString());
+        }
+		else{
+			return e1.name.compareTo(e2.name);
+		}
+    }
+}
+/**
+ * Developer:Class implementing EmpInterface and giving body to its functions
+ *
+ */
+
+public class Developer implements EmpInterface{
+	String name;
+	Integer age;
+	LinkedList<Developer> devList;
+	
+	Developer(String n,int a,LinkedList<Developer> l){
+		name=n;
+		age=a;
+		devList=l;
+	}
+	
+	public void sortAge(){
+		Collections.sort(devList,new MySort11(0));
+		for (Developer Developer2 : devList) {
+			System.out.println(Developer2);
+		} 
+	}
+	
+	public void sortName(){
+		Collections.sort(devList,new MySort11(1));
+		for (Developer Developer2 : devList) {
+			System.out.println(Developer2);
+		}
+	}
+	
+	public String toString(){
+		return "Name:"+name+"\nAge:"+age;
+	}
+}
+
+
