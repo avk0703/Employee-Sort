@@ -1,0 +1,107 @@
+import java.util.LinkedList;
+import java.util.Scanner;
+
+/**
+ * Employee:class including Main class and performing functionalities on Admin and Developer
+ *
+ */
+public class Employee {
+	static int response, checkExistence = 1;
+
+	public static void main(String args[]) {
+		Scanner input = new Scanner(System.in);
+		int adminIndex = 0,devIndex=0;
+		String name;
+		int age;
+		
+		LinkedList<Admin> admin = new LinkedList<Admin>();
+		LinkedList<Developer> dev = new LinkedList<Developer>();
+		Admin[] adminObj = new Admin[50];
+		Developer[] devObj=new Developer[50];
+		System.out.println("Continue as :1.Admin\n2.Developer");
+		response = input.nextInt();
+			switch (response) {
+			case 1: {
+				while (checkExistence == 1) {
+					System.out.println("Admin!\nChoose from following options:\n1.Add\n2.Sort\n3.Exit");
+					response = input.nextInt();
+					switch (response) {
+								case 1: {
+										
+										System.out.println("Enter Name :");
+										name = input.next();
+										System.out.println("Enter Age:");
+										age = input.nextInt();
+										adminObj[adminIndex++] = new Admin(name, age, admin);
+										admin.add(adminObj[--adminIndex]);
+										for (Admin admin2 : admin) {
+											System.out.println(admin2);
+										}
+										break;
+									}
+								case 2: {
+										System.out.println("Sort by:\n1.Age\n2.Name");
+										int y = input.nextInt();
+										switch (y) {
+											case 1: {
+												adminObj[adminIndex].sortAge();
+												break;
+											}
+											case 2: {
+												adminObj[adminIndex].sortName();
+												break;
+											}
+										}
+										break;
+									}
+								case 3:System.out.println("Bye!");
+										checkExistence = 0;
+									}
+							}
+						break;
+					}
+			
+			case 2:{
+				while (checkExistence == 1) {
+					System.out.println("Developer!\n1.Add\n2Sort\n3.Exit");
+					response = input.nextInt();
+	
+					switch (response) {
+								case 1: {
+										System.out.println("Enter Name :");
+										name = input.next();
+										System.out.println("Enter Age:");
+										age = input.nextInt();
+										devObj[devIndex++] = new Developer(name, age, dev);
+										dev.add(devObj[--devIndex]);
+										for (Developer Dev : dev) {
+											System.out.println(Dev);
+										}
+										break;
+									}
+									case 2: {
+										System.out.println("Sort by:\n1.Age\n2.Name");
+										int y = input.nextInt();
+										switch (y) {
+											case 1: {
+												devObj[devIndex].sortAge();
+												break;
+											}
+											case 2: {
+												devObj[devIndex].sortName();
+												break;
+											}
+										}
+										break;
+									}
+									case 3:
+										System.out.println("Bye!");
+										checkExistence = 0;
+									}
+							}
+						break;
+					}
+			}
+			input.close();
+	}
+}
