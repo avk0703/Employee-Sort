@@ -1,0 +1,5 @@
+
+public interface EmpInterface {
+	public void sortAge();
+	public void sortName();
+}
